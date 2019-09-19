@@ -294,9 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8203f12e5e32a448b1540713ff20b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aRTrackedImageManager: {fileID: 0}
-  planeManager: {fileID: 0}
-  pointCloudManager: {fileID: 0}
+  arSessionOrigin: {fileID: 0}
+  panelParent: {fileID: 0}
 --- !u!4 &1200486657
 Transform:
   m_ObjectHideFlags: 0

@@ -2015,4 +2015,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/Image_Tracker.unity
-  playerPath: C:/Users/Neha Prakash/AR_Image_Tracking/AR_Image_Tracking.apk
+  playerPath: C:/Users/Neha Prakash/AR_Tracking/AR_Image_Tracking.apk

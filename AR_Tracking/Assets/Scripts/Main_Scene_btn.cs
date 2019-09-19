@@ -13,8 +13,8 @@ public class Main_Scene_btn : MonoBehaviour
     private ARPointCloud[] aRPointClouds;
 
     private PlaceOnPlane1 placeOnPlane1;
-    private GameObject placedPrefab = null;
     private bool initOnce = false;
+    private bool isFirstTime = true;
 
     private void Start()
     {
@@ -23,10 +23,6 @@ public class Main_Scene_btn : MonoBehaviour
 
     public void Image_Tracker_btn()
     {
-        if(placedPrefab)
-        {
-            placedPrefab.SetActive(false);
-        }
         arSessionOrigin.GetComponent<ARTrackedImageManager>().enabled = true;
         arSessionOrigin.GetComponent<ImageRecognition>().enabled = true;
 
@@ -34,14 +30,12 @@ public class Main_Scene_btn : MonoBehaviour
         arSessionOrigin.GetComponent<ARPointCloudManager>().enabled = false;
         arSessionOrigin.GetComponent<ARRaycastManager>().enabled = false;
         arSessionOrigin.GetComponent<PlaceOnPlane1>().enabled = false;
-        panelParent.SetActive(false);
 
+        panelParent.SetActive(false);
     }
 
     public void Ground_Plane_btn()
     {
-        FindObjectOfType<PlaceOnPlane1>().ReScan();
-
         arSessionOrigin.GetComponent<ARPlaneManager>().enabled = true;
         arSessionOrigin.GetComponent<ARPointCloudManager>().enabled = true;
         arSessionOrigin.GetComponent<ARRaycastManager>().enabled = true;
@@ -50,18 +44,28 @@ public class Main_Scene_btn : MonoBehaviour
         arSessionOrigin.GetComponent<ARTrackedImageManager>().enabled = false;
         arSessionOrigin.GetComponent<ImageRecognition>().enabled = false;
 
-        if(initOnce == false)
+        if (isFirstTime)
+        {
+            isFirstTime = false;
+        }
+        else
+        {
+            FindObjectOfType<PlaceOnPlane1>().ReScan();
+        }
+
+        if (initOnce == false)
         {
             FindObjectOfType<PlaceOnPlane1>().Init();
             initOnce = true;
         }
+
         panelParent.SetActive(false);
     }
 
     public void ResetMenu()
     {
         panelParent.SetActive(true);
-
+        
         arSessionOrigin.GetComponent<ARTrackedImageManager>().enabled = false;
         arSessionOrigin.GetComponent<ImageRecognition>().enabled = false;
 
@@ -70,7 +74,13 @@ public class Main_Scene_btn : MonoBehaviour
         arSessionOrigin.GetComponent<ARRaycastManager>().enabled = false;
         arSessionOrigin.GetComponent<PlaceOnPlane1>().enabled = false;
 
-        FindObjectOfType<PlaceOnPlane1>().StopScan();
+        //FindObjectOfType<PlaceOnPlane1>().StopScan();
         FindObjectOfType<PlaceOnPlane1>().HideSpawn();
+
+        GameObject imageTrackerSpawn = GameObject.FindGameObjectWithTag("ImageSpawn");
+        if (imageTrackerSpawn)
+        {
+            Destroy(imageTrackerSpawn);
+        }
     }
 }

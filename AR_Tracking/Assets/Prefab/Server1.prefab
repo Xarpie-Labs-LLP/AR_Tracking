@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8164590750779208807}
   m_Layer: 0
   m_Name: Server1
-  m_TagString: Untagged
+  m_TagString: ImageSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 8011836981348647144, guid: d4daf7f3c614d1c4a90e54b170e1eb9e,
         type: 3}
       propertyPath: m_TagString
-      value: PlacedObject
+      value: ImageSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 7443573150091244412, guid: d4daf7f3c614d1c4a90e54b170e1eb9e,
         type: 3}

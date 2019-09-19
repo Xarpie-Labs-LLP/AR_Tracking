@@ -63,12 +63,6 @@ public class PlaceOnPlane1 : MonoBehaviour
                 spawnedObject = Instantiate(placedPrefab, hitPose.position, hitPose.rotation);
                 StopScan();
             }
-            /*else
-            {
-                spawnedObject.transform.position = hitPose.position;
-                spawnedObject.transform.localRotation = hitPose.rotation;
-                StopScan();
-            }*/
         }
     }
 
@@ -88,11 +82,7 @@ public class PlaceOnPlane1 : MonoBehaviour
 
     public void ReScan()
     {
-        if (spawnedObject)
-        {
-            spawnedObject.SetActive(true);
-        }
-        if(arplanes.Length > 0)
+       if (arplanes.Length > 0)
         {
             for (int i = 0; i < arplanes.Length; i++)
             {
@@ -100,7 +90,7 @@ public class PlaceOnPlane1 : MonoBehaviour
             }
         }
 
-        if(arpoints.Length > 0)
+        if (arpoints.Length > 0)
         {
             for (int i = 0; i < arpoints.Length; i++)
             {
@@ -113,7 +103,7 @@ public class PlaceOnPlane1 : MonoBehaviour
     {
         if (spawnedObject)
         {
-            spawnedObject.SetActive(false);
+            Destroy(spawnedObject);
         }
     }
 }
